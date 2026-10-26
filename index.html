@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECO-MAS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f1f5f9;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .app-screen {
+      max-width: 420px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    /* Estilo de la casita rodeando la bienvenida */
+    .house-badge {
+      position: relative;
+      background: #ecfdf5;
+      border: 3px solid #059669;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.15);
+    }
+    .house-badge::before {
+      content: '';
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 28px solid transparent;
+      border-right: 28px solid transparent;
+      border-bottom: 24px solid #059669;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-screen p-6 justify-between">
+    
+    <!-- PANTALLA 1: BIENVENIDA -->
+    <div id="screen-welcome" class="flex-1 flex flex-col justify-center items-center text-center py-8">
+      
+      <!-- Icono de casita rodeando el título -->
+      <div class="house-badge mb-8 w-full max-w-xs flex flex-col items-center">
+        <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl mb-3 shadow-md">
+          <i class="fa-solid fa-house-chimney-crack"></i>
+        </div>
+        <h1 class="text-2xl font-black text-emerald-800 uppercase tracking-wide">bienvenidos a ECO-MAS</h1>
+        <p class="text-xs text-emerald-600 mt-1 font-medium">Comercio Sostenible en Comas</p>
+      </div>
+
+      <p class="text-gray-500 text-sm mb-6 px-4">
+        Conectamos comercios locales con consumidores conscientes en todo el distrito.
+      </p>
+
+      <button onclick="goToRoles()" class="w-full max-w-xs bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl shadow-lg transition active:scale-95 flex items-center justify-center gap-2">
+        <span>Siguiente</span>
+        <i class="fa-solid fa-arrow-right text-sm"></i>
+      </button>
+    </div>
+
+    <!-- PANTALLA 2: SELECCIONA TU ROL -->
+    <div id="screen-role" class="hidden flex-1 flex flex-col pt-4">
+      
+      <!-- Flecha de regresar -->
+      <button onclick="goToWelcome()" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-700 mb-6 hover:bg-gray-200 transition">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+
+      <h2 class="text-2xl font-bold text-gray-800 mb-1">Selecciona tu rol</h2>
+      <p class="text-gray-500 text-xs mb-8">Elige cómo deseas ingresar a ECO-MAS</p>
+
+      <div class="space-y-4 flex-1">
+        <!-- Opcion Comerciante -->
+        <a href="comerciante.html" class="block bg-emerald-50 border-2 border-emerald-500 hover:bg-emerald-100 p-5 rounded-2xl transition shadow-sm active:scale-98">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-emerald-600 text-white rounded-xl flex items-center justify-center text-xl shadow">
+              <i class="fa-solid fa-store"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-emerald-900 text-lg">Comerciante</h3>
+              <p class="text-xs text-emerald-700">Registra tu puesto y publica tus datos</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Opcion Consumidor -->
+        <a href="consumidor.html" class="block bg-rose-50 border-2 border-rose-400 hover:bg-rose-100 p-5 rounded-2xl transition shadow-sm active:scale-98">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-rose-600 text-white rounded-xl flex items-center justify-center text-xl shadow">
+              <i class="fa-solid fa-basket-shopping"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-rose-900 text-lg">Consumidor</h3>
+              <p class="text-xs text-rose-700">Explora puestos, direcciones y opiniones</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function goToRoles() {
+      document.getElementById('screen-welcome').classList.add('hidden');
+      document.getElementById('screen-role').classList.remove('hidden');
+    }
+
+    function goToWelcome() {
+      document.getElementById('screen-role').classList.add('hidden');
+      document.getElementById('screen-welcome').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
